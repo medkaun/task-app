@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<table class="table table-bordered ad" id="hometbl">
+<thead>
+<tr>
+  <th scope="col" colspan=4 >Coming up</th>
+</tr>
+</thead>
+<tbody>
+  {% for t in tasks %}
+                <tr>
+                    <td>{{ t[1] }}</td>
+                    <td>{{ t[2] }}</td>
+                    <td>{{ t[4] }}</td>
+                    <td>{{ t[3] }}</td>
+                    <td><a href="/edittask/{{t[0]}}">edit</a></td>
+                </tr>
+  {% endfor %}
+</tbody>
+</table>
+{% endblock %}

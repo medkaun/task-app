@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Delete account
+{% endblock %}
+
+{% block main %}
+<div class="deleteform">
+  <h5>Are you sure you want to delete your account?</h5>
+  <form action="" method="post">
+  <input class="btn btn-in delete" type="submit" value="Yes">
+  <a href="/"><button class="btn btn-light del" type="button">Cancel</button></a>
+  </form>
+  </div>
+{% endblock %}

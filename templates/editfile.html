@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit file
+{% endblock %}
+
+{% block main %}
+    <form method=post class="upload" enctype=multipart/form-data>
+      <a href="{{url_for('uploaded_file', filename = data[1])}}">{{data[1]}}</a>
+      <div class="input-group mb-3 topinput">
+        <textarea class="form-control" name="notes" placeholder="Notes" type="text" style="width:250px;height:150px;">{{data[2]}}</textarea>
+      </div>
+      <h5 style="font-size: 15px">Change the file:</h5>
+      <input class = "btn btn-light" type=file name=file>
+      <select name="status" class="form-control file">
+        <option value="{{data[3]}}">{{data[3]}}</option>
+        <option value="New">New</option>
+        <option value="In progress">In progress</option>
+        <option value="Final">Final</option>
+      </select><br>
+      <input class = "btn btn-in" type=submit value=Save>
+      <a href="/deletefile/{{data[1]}}"><button class="btn btn-light del" type="button">Delete</button></a>
+    </form>
+{% endblock %}

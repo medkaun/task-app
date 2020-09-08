@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    New file
+{% endblock %}
+
+{% block main %}
+    <form method=post class="upload" enctype=multipart/form-data>
+      <div class="input-group mb-3">
+        <textarea class="form-control" name="notes" placeholder="Notes" type="text" style="width:250px;height:150px;"></textarea>
+      </div>
+      <input class = "btn btn-light" type=file name=file>
+      <input class = "btn btn-in" type=submit value=Upload>
+    </form>
+{% endblock %}

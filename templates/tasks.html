@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Tasks
+{% endblock %}
+
+{% block main %}
+<table class="table table-bordered" id="hometbl">
+<thead>
+<tr>
+  <th scope="col">Task</th>
+  <th scope="col">Responsible person</th>
+  <th scope="col">Status</th>
+  <th scope="col">Deadline</th>
+  <th scope="col"><a class="plus"href="/newtask" style="font-size: 20px">+</a></th>
+</tr>
+</thead>
+<tbody>
+  <tr>
+    <td scope="col" colspan=5 ><input autocomplete="off" autofocus class="form-control" id="search"
+      placeholder="Search" type="text" onkeyup="filter()">
+    </td>
+    </tr>
+  {% for t in tasks %}
+                <tr class="tbl">
+                    <td>{{ t[1] }}</td>
+                    <td>{{ t[2] }}</td>
+                    <td>{{ t[4] }}</td>
+                    <td>{{ t[3] }}</td>
+                    <td><a href="/edittask/{{t[0]}}">edit</a></td>
+                </tr>
+  {% endfor %}
+</tbody>
+</table>
+
+<script>
+  function filter() {
+  var input, filter, a, i, j;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("hometbl");
+  b = div.getElementsByClassName("tbl");
+  for (j = 0; j < b.length; j++){
+    a = b[j].childNodes;
+    for (i = 0; i < a.length-4; i++){
+      txtValue = a[i].textContent || a[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        b[j].style.display = "";
+        break;
+      }
+      else {
+        b[j].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Files
+{% endblock %}
+
+{% block main %}
+<table class="table table-bordered" id="hometbl">
+<thead>
+<tr>
+  <th scope="col">File</th>
+  <th scope="col">Notes</th>
+  <th scope="col">Status</th>
+  <th scope="col"><a class="plus"href="/newfile" style="font-size: 20px">+</a></th>
+</tr>
+</thead>
+<tbody>
+  <tr>
+    <td scope="col" colspan=4 ><input autocomplete="off" autofocus class="form-control" id="search"
+      placeholder="Search" type="text" onkeyup="filter()">
+    </td>
+    </tr>
+  {% for f in files %}
+                <tr class="tbl">
+                    <td><a href={{url_for('uploaded_file', filename = f[1])}}>{{ f[1] }}</a></td>
+                    <td>{{ f[2] }}</td>
+                    <td>{{ f[3] }}</td>
+                    <td><a href="/editfile/{{f[0]}}">edit</a></td>
+                </tr>
+  {% endfor %}
+</tbody>
+</table>
+
+<script>
+  function filter() {
+  var input, filter, a, i, j;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("hometbl");
+  b = div.getElementsByClassName("tbl");
+  for (j = 0; j < b.length; j++){
+    a = b[j].childNodes;
+    for (i = 0; i < a.length-2; i++){
+      txtValue = a[i].textContent || a[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        b[j].style.display = "";
+        break;
+      }
+      else {
+        b[j].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+{% endblock %}

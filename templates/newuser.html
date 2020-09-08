@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    New user
+{% endblock %}
+
+{% block main %}
+<div id="newuserform">
+<form action="/newuser" method="post">
+  <div class="input-group mb-3">
+    <input autocomplete="off" autofocus class="form-control" name="email" placeholder="Email" type="text">
+  </div>
+    <button class="btn btn-in" type="submit">Add a new user</button>
+  </form>
+  </div>
+  <div class="userlist">
+  <h5>Current users:</h5>
+  <ul class="list-group list-group-flush">
+    {% for user in users %}
+      <li class="list-group-item">{{ user[1] }}</li>
+    {% endfor %}
+</ul>
+<a href="/delete">Delete my account</a>
+</div>
+{% endblock %}

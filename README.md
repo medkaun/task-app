@@ -6,6 +6,7 @@ that way no other people can reach the information.
 In this page you can:
 -add, edit and delete tasks
 -upload, edit and delete files
+-get email reminders three days before the deadline of a task
 
 It also has a 'reset password' function in case a user forgets it.
 
